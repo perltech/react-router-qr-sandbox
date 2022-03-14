@@ -10,7 +10,6 @@ var QRCode = require('qrcode.react');
 function App() {
   const [phrase, setPhrase] = useState("");
   let secretPhrase = "Happy";
-  let hasQRCode = false;
 
   // const handleInput = () => {
   //   if (phrase == secretPhrase) {
@@ -31,10 +30,10 @@ function App() {
           <br />
           {/* Displays ONLY the QR code without creating an active link, that connects to the route from index.js */}
             {/* <Link to="/happy"> */}
-            {/* if (hasQRCode) {
-              <QRCode value="http://localhost:3001/happy"/>
-            } */}
-            {phrase === secretPhrase ? <QRCode value="http://localhost:3001/happy"/> : ""}
+            <br />
+            <br />
+
+            {phrase === secretPhrase ? <QRCode value={window.location.origin + "/happy"}/> : ""}
             {/* </Link> */}
         </h2>
         <h2>
@@ -42,7 +41,7 @@ function App() {
           <br />
           <br />
 
-          <Link to="/sad"><QRCode value="http://localhost:3001/sad" /></Link>
+          <Link to="/sad"><QRCode value={window.location.origin + "/sad"} /></Link>
         </h2>
       </header>
       <Outlet />
